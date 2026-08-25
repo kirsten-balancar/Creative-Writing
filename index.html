@@ -1,1 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Writing — Multimedia Forms</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #273238;
+    background: linear-gradient(135deg, #edf4f2, #f8f1e9 55%, #e9eef5);
+}
+
+/* HERO */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0.35;
+}
+
+.hero::before {
+    width: 400px;
+    height: 400px;
+    background: #b8d0d2;
+    left: -140px;
+    top: -130px;
+}
+
+.hero::after {
+    width: 450px;
+    height: 450px;
+    background: #dfc0b2;
+    right: -170px;
+    bottom: -190px;
+}
+
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+}
+
+.kicker {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #557b83;
+}
+
+.hero h1 {
+    font-size: clamp(44px, 8vw, 82px);
+    line-height: 0.95;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.subtitle {
+    max-width: 720px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #68747d;
+}
+
+.byline {
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* NAVIGATION */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 253, 249, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #ddd5c8;
+}
+
+.nav-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 12px 18px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #273238;
+}
+
+nav a:hover {
+    background: #e8eeee;
+}
+
+/* MAIN */
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 18px 90px;
+}
+
+.intro {
+    max-width: 780px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.intro p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #68747d;
+}
+
+/* WORK CARDS */
+.work {
+    background: #fffdf9;
+    border: 1px solid #ddd5c8;
+    border-radius: 24px;
+    padding: 32px;
+    margin: 30px 0;
+    box-shadow: 0 12px 35px rgba(40, 50, 55, 0.07);
+}
+
+.work-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.number {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #557b83;
+}
+
+.work h3 {
+    font-size: 33px;
+    font-weight: 500;
+    margin: 7px 0;
+}
+
+.author {
+    color: #68747d;
+    font-style: italic;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #edf2f0;
+    color: #45646a;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.description {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #46515a;
+    margin-top: 25px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 25px;
+}
+
+.info-box {
+    background: #f7f3ec;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.info-box h4 {
+    margin: 0 0 14px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9b6d5d;
+}
+
+.info-box ul {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.script {
+    background: #f1f5f3;
+    border-left: 4px solid #557b83;
+    border-radius: 0 14px 14px 0;
+    padding: 17px 18px;
+    line-height: 1.7;
+}
+
+/* BUTTONS */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #273238;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn.secondary {
+    background: transparent;
+    color: #273238;
+    border: 1px solid #ddd5c8;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #ddd5c8;
+    color: #68747d;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .hero {
+        min-height: 70vh;
+    }
+
+    .work {
+        padding: 23px;
+    }
+
+    .work-head {
+        display: block;
+    }
+
+    .tag {
+        margin-top: 15px;
+    }
+
+    .work h3 {
+        font-size: 28px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro h2 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero" id="home">
+    <div class="hero-content">
+        <div class="kicker">
+            Creative Writing • Multimedia Forms
+        </div>
+
+        <h1>
+            Words, Images &amp; Meaning
+        </h1>
+
+        <p class="subtitle">
+            A collection of creative works presented through
+            written expression and visual design.
+        </p>
+
+        <div class="byline">
+            Prepared by Vince Kirsten B. Balgomia
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#home">Home</a>
+        <a href="#works">Works</a>
+        <a href="#blue-flowers">The Blue Flowers</a>
+        <a href="#quiet-love">A Quiet Kind of Love</a>
+        <a href="#road">The Road Only I Could See</a>
+        <a href="#mountstrain">Mountstrain</a>
+    </div>
+</nav>
+
+<main id="works">
+
+<section class="intro">
+    <h2>Multimedia Forms Portfolio</h2>
+
+    <p>
+        Four creative works that combine literary writing
+        with visual elements to strengthen mood, symbolism,
+        and meaning.
+    </p>
+</section>
+
+
+<!-- WORK 1 -->
+
+<article class="work" id="blue-flowers">
+
+    <div class="work-head">
+
+        <div>
+            <div class="number">01</div>
+
+            <h3>The Blue Flowers</h3>
+
+            <div class="author">
+                by Clark Delos Reyes
+            </div>
+        </div>
+
+        <span class="tag">
+            Short story + visual elements
+        </span>
+
+    </div>
+
+    <p class="description">
+
+        <em>The Blue Flowers</em> is a short story about Maya,
+        a young student who discovers a garden that teaches her
+        the importance of kindness, patience, and hope.
+        Its watercolor-inspired visuals and blue floral elements
+        support the peaceful message that small acts of care
+        can create something beautiful and inspire a community.
+
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <h4>Multimedia Elements</h4>
+
+            <ul>
+                <li>Written narrative</li>
+                <li>Watercolor-style background</li>
+                <li>Blue floral imagery</li>
+                <li>Decorative composition and typography</li>
+                <li>Soft blue and silver-purple tones</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h4>Short Presentation</h4>
+
+            <div class="script">
+
+                “Our first work is
+                <em>The Blue Flowers</em>,
+                a short story about how small acts of kindness
+                and care can create something meaningful.
+                The watercolor-style visuals and blue floral
+                elements support its peaceful and hopeful message.”
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <a
+            class="btn"
+            href="https://canva.link/9ilra4sb747zydf"
+            target="_blank"
+            rel="noopener"
+        >
+            View Canva Work ↗
+        </a>
+
+        <a
+            class="btn secondary"
+            href="#works"
+        >
+            Back to Works
+        </a>
+
+    </div>
+
+</article>
+
+
+<!-- WORK 2 -->
+
+<article class="work" id="quiet-love">
+
+    <div class="work-head">
+
+        <div>
+            <div class="number">02</div>
+
+            <h3>A Quiet Kind of Love</h3>
+
+            <div class="author">
+                by Rezielyn Pestilos
+            </div>
+        </div>
+
+        <span class="tag">
+            Poem + visual elements
+        </span>
+
+    </div>
+
+    <p class="description">
+
+        <em>A Quiet Kind of Love</em> is a poem about finding
+        genuine love in simple moments, kindness, trust,
+        and quiet companionship. Its vintage-inspired visuals,
+        parchment textures, romantic landscape, roses, and
+        sepia imagery reinforce the idea that lasting love
+        is not about grand gestures, but about choosing to care,
+        stay, and love each day.
+
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <h4>Multimedia Elements</h4>
+
+            <ul>
+                <li>Written poetry</li>
+                <li>Romantic landscape painting</li>
+                <li>Aged parchment and scrapbook textures</li>
+                <li>Red roses and floral details</li>
+                <li>Sepia couple imagery</li>
+                <li>Glowing script typography</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h4>Short Presentation</h4>
+
+            <div class="script">
+
+                “Our second work is
+                <em>A Quiet Kind of Love</em>,
+                a poem that presents love as something found
+                in everyday moments rather than grand gestures.
+                The vintage visuals, romantic landscape,
+                parchment textures, roses, and sepia imagery
+                support its message of kindness, trust,
+                and commitment.”
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <a
+            class="btn"
+            href="https://canva.link/e6bicg942glby17"
+            target="_blank"
+            rel="noopener"
+        >
+            View Canva Work ↗
+        </a>
+
+        <a
+            class="btn secondary"
+            href="#works"
+        >
+            Back to Works
+        </a>
+
+    </div>
+
+</article>
+
+
+<!-- WORK 3 -->
+
+<article class="work" id="road">
+
+    <div class="work-head">
+
+        <div>
+            <div class="number">03</div>
+
+            <h3>The Road Only I Could See</h3>
+
+            <div class="author">
+                by Cristina Pagaduan
+            </div>
+        </div>
+
+        <span class="tag">
+            Poem + visual elements
+        </span>
+
+    </div>
+
+    <p class="description">
+
+        <em>The Road Only I Could See</em> is a reflective poem
+        about facing fear, hardship, and uncertainty while
+        discovering personal strength. Its visuals move from
+        a dark, foggy road into warm morning light, symbolizing
+        the journey from doubt and struggle toward hope,
+        growth, and self-discovery.
+
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <h4>Multimedia Elements</h4>
+
+            <ul>
+                <li>Written poetry</li>
+                <li>Foggy forest road</li>
+                <li>Nighttime streetlights</li>
+                <li>Golden morning light</li>
+                <li>Visual transition from darkness to warmth</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h4>Short Presentation</h4>
+
+            <div class="script">
+
+                “Our third work is
+                <em>The Road Only I Could See</em>
+                by Cristina Pagaduan.
+                The poem uses a journey along an uncertain road
+                as a metaphor for personal growth.
+                Its visuals transition from darkness into
+                morning light, reflecting the movement from
+                fear toward hope and self-discovery.”
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <a
+            class="btn"
+            href="https://canva.link/zhrm4lml1lvst84"
+            target="_blank"
+            rel="noopener"
+        >
+            View Canva Work ↗
+        </a>
+
+        <a
+            class="btn secondary"
+            href="#works"
+        >
+            Back to Works
+        </a>
+
+    </div>
+
+</article>
+
+
+<!-- WORK 4 -->
+
+<article class="work" id="mountstrain">
+
+    <div class="work-head">
+
+        <div>
+            <div class="number">04</div>
+
+            <h3>Mountstrain</h3>
+
+            <div class="author">
+                by Abby Stephanie Sta. Maria
+            </div>
+        </div>
+
+        <span class="tag">
+            Poem + visual elements
+        </span>
+
+    </div>
+
+    <p class="description">
+
+        <em>Mountstrain</em> is an environmental poem about
+        pollution and plastic waste and their effects on
+        natural landscapes and communities. Its forest imagery
+        and vibrant greenery emphasize the beauty of nature
+        while supporting the poem's urgent call to protect it
+        before that beauty is lost.
+
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <h4>Multimedia Elements</h4>
+
+            <ul>
+                <li>Written poetry</li>
+                <li>Forest canopy and jungle imagery</li>
+                <li>Floating bokeh and light effects</li>
+                <li>Natural green and warm tones</li>
+                <li>Cursive title typography</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h4>Short Presentation</h4>
+
+            <div class="script">
+
+                “Our fourth work is
+                <em>Mountstrain</em>
+                by Abby Stephanie Sta. Maria.
+                The poem focuses on pollution and plastic waste
+                and how they damage the natural environment.
+                Its forest imagery emphasizes nature's beauty
+                while the poem calls on people to protect it
+                before that beauty is lost.”
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <a
+            class="btn"
+            href="https://canva.link/kovvn6stmnc1bn8"
+            target="_blank"
+            rel="noopener"
+        >
+            View Canva Work ↗
+        </a>
+
+        <a
+            class="btn secondary"
+            href="#works"
+        >
+            Back to Works
+        </a>
+
+    </div>
+
+</article>
+
+</main>
+
+<footer>
+
+    Creative Writing — Multimedia Forms
+
+    <br><br>
+
+    Portfolio prepared by
+    <strong>Vince Kirsten B. Balgomia</strong>
+
+</footer>
+
+</body>
+          </html>
