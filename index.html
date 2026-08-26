@@ -4,695 +4,1057 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creative Writing: Creating a Literary Online Portfolio Using Multimedia Forms</title>
+<title>Creative Writing | Multimedia Forms</title>
 
 <style>
 
+/* =========================================================
+   CREATIVE WRITING — MULTIMEDIA PORTFOLIO
+   GROUP 3 • REPORTER #6
+   WEBSITE PREPARED BY VINCE BALGOMIA
+   ========================================================= */
+
+
+/* ---------- RESET ---------- */
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-:root {
-    --ink: #202a30;
-    --muted: #657178;
-    --paper: #f8f5ef;
-    --line: rgba(40, 50, 55, 0.14);
-    --shadow: 0 18px 45px rgba(20, 30, 35, 0.12);
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    color: var(--ink);
+    min-height: 100vh;
     font-family: Georgia, "Times New Roman", serif;
-    background: #e9eceb;
+    background: #08111a;
+    color: #202a31;
+    overflow-x: hidden;
 }
 
 a {
     color: inherit;
-}
-
-.container {
-    width: min(1120px, calc(100% - 32px));
-    margin: auto;
-}
-
-.small-label {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.section-title {
-    font-size: clamp(34px, 6vw, 60px);
-    line-height: 1;
-    margin: 12px 0 15px;
-    font-weight: 500;
-}
-
-.section-subtitle {
-    max-width: 720px;
-    color: var(--muted);
-    line-height: 1.7;
-    font-size: 17px;
-}
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 24px;
-}
-
-.button {
-    display: inline-block;
     text-decoration: none;
-    padding: 12px 17px;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    transition: 0.2s ease;
-}
-
-.button:hover {
-    transform: translateY(-2px);
-}
-
-.button.dark {
-    background: #202a30;
-    color: white;
-}
-
-.button.light {
-    background: rgba(255, 255, 255, 0.68);
-    border: 1px solid var(--line);
-}
-
-.button.gold {
-    background: #b58b4c;
-    color: white;
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* ---------- GLOBAL VARIABLES ---------- */
+
+:root {
+    --night: #08111a;
+    --deep-blue: #102b40;
+    --blue: #276782;
+    --sky: #7fc4d8;
+    --gold: #e5bd68;
+    --cream: #f5f0e6;
+    --paper: #eee8dc;
+    --ink: #202a31;
+    --muted: #68757c;
+    --white: #ffffff;
+}
+
+
+/* =========================================================
+   DECORATIVE MOTION
+   ========================================================= */
+
+@keyframes floatSlow {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(3deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes floatReverse {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(15px) translateX(12px);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes pulseGlow {
+    0%,
+    100% {
+        opacity: .25;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .65;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
 
 .hero {
-    min-height: 82vh;
-    display: flex;
-    align-items: center;
+    min-height: 94vh;
     position: relative;
     overflow: hidden;
 
-    background:
-        radial-gradient(circle at 15% 20%, rgba(127, 166, 190, 0.40), transparent 28%),
-        radial-gradient(circle at 88% 80%, rgba(180, 145, 93, 0.30), transparent 30%),
-        linear-gradient(135deg, #101d27, #263d49 48%, #6c6258);
+    display: flex;
+    align-items: center;
 
-    color: white;
+    color: var(--white);
+
+    background:
+        radial-gradient(
+            circle at 14% 18%,
+            rgba(103, 196, 222, .42),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 78% 12%,
+            rgba(229, 189, 104, .28),
+            transparent 21%
+        ),
+
+        radial-gradient(
+            circle at 88% 82%,
+            rgba(133, 87, 166, .30),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 18% 90%,
+            rgba(45, 134, 112, .24),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #06101a 0%,
+            #102b40 43%,
+            #294f61 70%,
+            #554457 100%
+        );
 }
+
+
+/* ---------- HERO ATMOSPHERE ---------- */
 
 .hero::before {
-    content: "✦";
-    position: absolute;
-    font-size: 280px;
-    right: -30px;
-    top: -70px;
-    opacity: 0.045;
-}
-
-.hero::after {
     content: "";
     position: absolute;
+
     width: 520px;
     height: 520px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    right: -190px;
+    top: -190px;
+
+    border: 1px solid rgba(255,255,255,.16);
     border-radius: 50%;
-    left: -280px;
-    bottom: -280px;
+
+    box-shadow:
+        0 0 0 35px rgba(255,255,255,.035),
+        0 0 0 75px rgba(255,255,255,.025),
+        0 0 0 120px rgba(255,255,255,.015);
+
+    animation: pulseGlow 7s ease-in-out infinite;
 }
+
+
+/* ---------- HERO STARS ---------- */
+
+.hero::after {
+    content:
+        "✦     ·       ✧       ·      ✦"
+        "     ·       ✦       ·       ✧"
+        "       ·       ✦       ·";
+
+    position: absolute;
+
+    width: 100%;
+    top: 12%;
+    left: 0;
+
+    padding-left: 8%;
+
+    font-family: Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 18px;
+    line-height: 3.8;
+
+    color: rgba(255,255,255,.45);
+
+    pointer-events: none;
+
+    animation: floatReverse 12s ease-in-out infinite;
+}
+
+
+/* ---------- FLOATING ORBS ---------- */
+
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+.orb-one {
+    width: 18px;
+    height: 18px;
+
+    left: 12%;
+    bottom: 18%;
+
+    background: rgba(127,196,216,.65);
+
+    box-shadow:
+        0 0 25px rgba(127,196,216,.75),
+        0 0 60px rgba(127,196,216,.25);
+
+    animation: floatSlow 6s ease-in-out infinite;
+}
+
+.orb-two {
+    width: 10px;
+    height: 10px;
+
+    left: 33%;
+    top: 22%;
+
+    background: rgba(229,189,104,.8);
+
+    box-shadow:
+        0 0 18px rgba(229,189,104,.75);
+
+    animation: floatReverse 8s ease-in-out infinite;
+}
+
+.orb-three {
+    width: 13px;
+    height: 13px;
+
+    right: 28%;
+    bottom: 18%;
+
+    background: rgba(192,154,220,.7);
+
+    box-shadow:
+        0 0 25px rgba(192,154,220,.7);
+
+    animation: floatSlow 9s ease-in-out infinite;
+}
+
+
+/* ---------- HERO CONTENT ---------- */
 
 .hero-content {
+    width: min(1120px, 90%);
+    margin: auto;
+
     position: relative;
-    z-index: 2;
-    max-width: 950px;
-    padding: 80px 0;
+    z-index: 5;
+
+    padding: 90px 0;
+
+    animation: revealUp 1s ease both;
 }
 
-.hero .small-label {
-    color: #bfd5df;
+
+/* ---------- SMALL LABEL ---------- */
+
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    color: #d8eef5;
 }
+
+.kicker::before {
+    content: "";
+
+    width: 38px;
+    height: 1px;
+
+    background: var(--gold);
+}
+
+
+/* ---------- HERO TITLE ---------- */
 
 .hero h1 {
-    font-size: clamp(43px, 8vw, 88px);
-    line-height: 0.96;
+    max-width: 970px;
+
+    margin: 25px 0 25px;
+
+    font-size: clamp(45px, 8vw, 88px);
+
+    line-height: .94;
+
     font-weight: 500;
-    max-width: 1000px;
-    margin: 20px 0;
+
+    letter-spacing: -2px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 5px 25px rgba(0,0,0,.22),
+        0 15px 45px rgba(0,0,0,.18);
 }
+
+
+/* ---------- HERO DESCRIPTION ---------- */
 
 .hero-description {
-    max-width: 760px;
-    font-size: 19px;
-    line-height: 1.7;
-    color: #dce5e9;
+    max-width: 700px;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    color: #dbe9ee;
 }
 
-.identity {
-    margin-top: 35px;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 7px;
-    padding: 18px 21px;
-    border-left: 3px solid #c8a76b;
-    background: rgba(0, 0, 0, 0.18);
+
+/* ---------- HERO META ---------- */
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 32px;
 }
 
-.identity strong {
-    font-family: Arial, sans-serif;
+.meta-pill {
+    padding: 9px 15px;
+
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.07);
+
+    backdrop-filter: blur(8px);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 10px;
     letter-spacing: 1px;
-}
+    text-transform: uppercase;
 
-.identity span {
-    color: #c9d4d8;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
+    color: #d9e8ed;
 }
 
 
-/* =========================
+/* ---------- HERO CREDIT ---------- */
+
+.credit-card {
+    position: relative;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin-top: 42px;
+
+    padding: 20px 24px;
+
+    border-left: 3px solid var(--gold);
+
+    background: rgba(0,0,0,.18);
+
+    backdrop-filter: blur(13px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.18);
+
+    overflow: hidden;
+}
+
+.credit-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    animation: shimmer 7s linear infinite;
+}
+
+.credit-card strong {
+    display: block;
+
+    position: relative;
+    z-index: 2;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: .5px;
+}
+
+.credit-card span {
+    display: block;
+
+    position: relative;
+    z-index: 2;
+
+    margin-top: 6px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 11px;
+
+    color: #cbdce2;
+}
+
+
+/* ---------- HERO SCROLL ---------- */
+
+.scroll-hint {
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    z-index: 6;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.55);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 35px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* =========================================================
    NAVIGATION
-========================= */
+   ========================================================= */
 
 nav {
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
-    background: rgba(250, 248, 243, 0.94);
+
+    background: rgba(247,245,239,.94);
+
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
+
+    border-bottom: 1px solid rgba(0,0,0,.09);
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.05);
 }
 
 .nav-inner {
-    width: min(1120px, calc(100% - 20px));
+    width: min(1120px, 94%);
+
     margin: auto;
+
     display: flex;
-    overflow-x: auto;
+
+    align-items: center;
+
     gap: 5px;
+
+    overflow-x: auto;
+
     padding: 10px 0;
+
+    scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar {
+    display: none;
 }
 
 nav a {
-    text-decoration: none;
-    white-space: nowrap;
-    padding: 9px 13px;
+    position: relative;
+
+    flex-shrink: 0;
+
+    padding: 9px 14px;
+
     border-radius: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 800;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: .4px;
+
+    color: #334047;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 0;
+    height: 1px;
+
+    background: #b68c43;
+
+    transform: translateX(-50%);
+
+    transition: width .2s ease;
 }
 
 nav a:hover {
-    background: #e5e9e8;
+    background: #e2ecef;
+
+    color: #183a4d;
+
+    transform: translateY(-1px);
+}
+
+nav a:hover::after {
+    width: 45%;
 }
 
 
-/* =========================
-   LESSON INTRO
-========================= */
+/* =========================================================
+   INTRODUCTION SECTION
+   ========================================================= */
 
 .intro {
-    padding: 90px 0 55px;
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 105px 0;
+
     background:
-        linear-gradient(rgba(248, 245, 239, 0.95), rgba(248, 245, 239, 0.95)),
-        repeating-linear-gradient(
-            0deg,
-            transparent 0,
-            transparent 29px,
-            rgba(70, 70, 60, 0.07) 30px
+        radial-gradient(
+            circle at 8% 20%,
+            rgba(79,151,174,.13),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 93% 80%,
+            rgba(211,161,85,.16),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f8f6f1,
+            #f1ede4
         );
 }
+
+
+/* ---------- INTRO DECORATION ---------- */
+
+.intro::before {
+    content: "✎";
+
+    position: absolute;
+
+    right: 8%;
+    top: 7%;
+
+    font-size: 145px;
+
+    color: rgba(55,105,125,.08);
+
+    transform: rotate(-12deg);
+
+    animation: floatSlow 8s ease-in-out infinite;
+}
+
+.intro::after {
+    content: "";
+
+    position: absolute;
+
+    left: -100px;
+    bottom: -100px;
+
+    width: 280px;
+    height: 280px;
+
+    border: 1px solid rgba(74,120,135,.13);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 30px rgba(74,120,135,.035),
+        0 0 0 60px rgba(74,120,135,.025);
+}
+
+
+/* ---------- INTRO GRID ---------- */
 
 .intro-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 55px;
-    align-items: end;
-}
+    width: min(1120px, 90%);
 
-.lesson-card {
-    padding: 28px;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow: var(--shadow);
-}
+    margin: auto;
 
-.lesson-card strong {
-    display: block;
-    font-size: 23px;
-    margin-bottom: 10px;
-}
-
-.lesson-card span {
-    color: var(--muted);
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   LEADER
-========================= */
-
-.leader {
     position: relative;
-    overflow: hidden;
-    padding: 100px 0;
+    z-index: 3;
 
-    background:
-        radial-gradient(circle at 80% 20%, rgba(109, 150, 184, 0.32), transparent 25%),
-        radial-gradient(circle at 15% 80%, rgba(179, 145, 92, 0.20), transparent 28%),
-        linear-gradient(135deg, #172631, #304b58 55%, #8a775f);
-
-    color: white;
-}
-
-.leader::before {
-    content: "ASTRA";
-    position: absolute;
-    right: -40px;
-    top: 30px;
-    font-family: Arial, sans-serif;
-    font-size: clamp(90px, 18vw, 220px);
-    font-weight: 900;
-    letter-spacing: -10px;
-    opacity: 0.035;
-}
-
-.leader-grid {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+
+    grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(280px, .8fr);
+
     gap: 60px;
-    position: relative;
-    z-index: 2;
-}
 
-.leader-profile {
-    border-left: 2px solid #c8a76b;
-    padding-left: 25px;
-}
-
-.leader-profile h2 {
-    font-size: clamp(38px, 6vw, 65px);
-    line-height: 1;
-    font-weight: 500;
-    margin: 13px 0;
-}
-
-.leader-profile .role {
-    color: #d5b978;
-    font-family: Arial, sans-serif;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-.leader-profile p {
-    color: #d8e1e4;
-    line-height: 1.8;
-    font-size: 16px;
-}
-
-.leader-description {
-    color: #dce5e8;
-    line-height: 1.8;
-    font-size: 17px;
-}
-
-.star-line {
-    font-size: 30px;
-    letter-spacing: 10px;
-    color: #d7bd7d;
-    margin-bottom: 25px;
+    align-items: center;
 }
 
 
-/* =========================
-   WORK SECTIONS
-========================= */
+/* ---------- SECTION LABEL ---------- */
 
-.works {
-    padding: 90px 0;
-    background: #eeeae2;
-}
+.section-label {
+    display: flex;
 
-.works-header {
-    margin-bottom: 45px;
-}
+    align-items: center;
 
-.work-card {
-    position: relative;
-    overflow: hidden;
-    margin: 30px 0;
-    border-radius: 25px;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(30, 40, 45, 0.13);
-}
+    gap: 10px;
 
-.work-inner {
-    padding: 42px;
-    position: relative;
-    z-index: 2;
-}
+    font-family: Arial, Helvetica, sans-serif;
 
-.work-number {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 900;
+    font-size: 10px;
+
     letter-spacing: 3px;
-    opacity: 0.7;
-}
 
-.work-card h3 {
-    font-size: clamp(30px, 5vw, 48px);
-    line-height: 1;
-    font-weight: 500;
-    margin: 12px 0 7px;
-}
-
-.author {
-    font-style: italic;
-    font-size: 16px;
-    opacity: 0.72;
-}
-
-.work-description {
-    max-width: 760px;
-    font-size: 17px;
-    line-height: 1.8;
-    margin-top: 25px;
-}
-
-.multimedia {
-    margin-top: 24px;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
     text-transform: uppercase;
-    opacity: 0.72;
+
+    font-weight: bold;
+
+    color: #66757b;
+}
+
+.section-label::before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    background: #b28a47;
 }
 
 
-/* =========================
-   UNIQUE MEMBER BACKGROUNDS
-========================= */
+/* ---------- INTRO TITLE ---------- */
 
-/* Clark - The Blue Flowers */
+.intro h2 {
+    max-width: 800px;
 
-.blue-flowers {
-    background:
-        radial-gradient(circle at 80% 15%, rgba(96, 128, 180, 0.40), transparent 25%),
-        radial-gradient(circle at 20% 90%, rgba(147, 126, 170, 0.25), transparent 30%),
-        linear-gradient(135deg, #eaf2f6, #dbe7ef 50%, #ece5ef);
+    margin: 16px 0 22px;
 
-    color: #24323b;
-}
+    font-size: clamp(38px, 6vw, 66px);
 
-.blue-flowers::after {
-    content: "✿  ❀  ✿";
-    position: absolute;
-    right: 25px;
-    bottom: 15px;
-    font-size: 100px;
-    color: #6f86ad;
-    opacity: 0.10;
+    line-height: .98;
+
+    font-weight: 500;
+
+    letter-spacing: -1.5px;
+
+    color: #202c32;
 }
 
 
-/* Rezielyn - A Quiet Kind of Love */
+/* ---------- INTRO TEXT ---------- */
 
-.quiet-love {
-    background:
-        radial-gradient(circle at 85% 15%, rgba(163, 73, 67, 0.25), transparent 24%),
-        linear-gradient(120deg, #f3e6ce, #e9d4b7 50%, #d8c2a9);
+.intro-description {
+    max-width: 720px;
 
-    color: #3d3029;
-}
+    color: #637077;
 
-.quiet-love::after {
-    content: "❦";
-    position: absolute;
-    right: 40px;
-    bottom: -20px;
-    font-size: 210px;
-    color: #9b4d43;
-    opacity: 0.09;
+    font-size: 16px;
+
+    line-height: 1.85;
 }
 
 
-/* Cristine - The Road Only I Could See */
+/* =========================================================
+   MULTIMEDIA CONCEPT CARD
+   ========================================================= */
 
-.road {
-    background:
-        radial-gradient(circle at 50% 15%, rgba(202, 164, 82, 0.24), transparent 20%),
-        linear-gradient(180deg, #17251f, #25382f 48%, #b69a60);
+.media-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
 
     color: white;
-}
-
-.road::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 90%;
-    left: 50%;
-    top: 5%;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(238, 203, 108, 0.55) 0,
-        rgba(238, 203, 108, 0.55) 45px,
-        transparent 45px,
-        transparent 80px
-    );
-
-    opacity: 0.25;
-}
-
-
-/* Abby - Mountstrain */
-
-.mountstrain {
-    background:
-        radial-gradient(circle at 25% 15%, rgba(236, 191, 99, 0.35), transparent 22%),
-        radial-gradient(circle at 90% 85%, rgba(36, 103, 66, 0.35), transparent 28%),
-        linear-gradient(135deg, #d9e5d2, #a9c19f 50%, #557b58);
-
-    color: #1f3326;
-}
-
-.mountstrain::after {
-    content: "♣  ♧  ♣";
-    position: absolute;
-    right: 10px;
-    bottom: -30px;
-    font-size: 170px;
-    opacity: 0.08;
-}
-
-
-/* James - ADMIRED, NEVER POSSESSED */
-
-.admired {
-    background:
-        radial-gradient(circle at 75% 18%, rgba(178, 206, 232, 0.34), transparent 22%),
-        radial-gradient(circle at 15% 85%, rgba(61, 91, 128, 0.32), transparent 28%),
-        linear-gradient(150deg, #071625, #102c48 48%, #264c69);
-
-    color: #eaf5ff;
-}
-
-.admired::after {
-    content: "✦     ✧       ✦";
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-    font-size: 90px;
-    color: #a9d5f2;
-    opacity: 0.12;
-}
-
-
-/* =========================
-   VINCE'S WORKS
-========================= */
-
-.vince-works {
-    padding: 90px 0;
 
     background:
-        linear-gradient(rgba(245, 243, 238, 0.94), rgba(245, 243, 238, 0.94)),
-        repeating-linear-gradient(
-            -45deg,
-            transparent 0,
-            transparent 14px,
-            rgba(40, 50, 55, 0.035) 15px
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(255,216,132,.35),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(88,190,210,.35),
+            transparent 27%
+        ),
+
+        linear-gradient(
+            145deg,
+            #132c3c,
+            #285a70 55%,
+            #594867
         );
+
+    box-shadow:
+        0 25px 55px rgba(30,50,60,.18);
 }
 
-.vince-work {
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    margin: 12px 0;
-    overflow: hidden;
-    transition: 0.2s ease;
+
+/* ---------- CARD ORBIT ---------- */
+
+.media-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -90px;
+    top: -90px;
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 25px rgba(255,255,255,.035),
+        0 0 0 55px rgba(255,255,255,.025);
+
+    animation: pulseGlow 6s ease-in-out infinite;
 }
 
-.vince-work:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(30, 40, 45, 0.08);
+
+/* ---------- CARD STARS ---------- */
+
+.media-card::after {
+    content:
+        "✦   ·   ✧   ·   ✦"
+        "   ·   ✦   ·   ✧";
+
+    position: absolute;
+
+    right: 15px;
+    top: 20px;
+
+    width: 180px;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 13px;
+
+    line-height: 3;
+
+    letter-spacing: 5px;
 }
 
-.vince-work a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    text-decoration: none;
-    padding: 19px 22px;
+
+/* ---------- CARD CONTENT ---------- */
+
+.media-card-content {
+    position: relative;
+
+    z-index: 4;
 }
 
-.vince-work-title {
-    font-size: 17px;
-}
+.media-card-number {
+    font-family: Arial, Helvetica, sans-serif;
 
-.vince-work-type {
-    font-family: Arial, sans-serif;
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #7b8589;
+
+    letter-spacing: 3px;
+
+    color: #d8c17d;
 }
 
-.arrow {
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-}
+.media-card h3 {
+    max-width: 330px;
 
+    margin: 18px 0;
 
-/* =========================
-   MEMBERS HEADER
-========================= */
+    font-size: 32px;
 
-.members {
-    padding: 95px 0 45px;
+    line-height: 1.05;
 
-    background:
-        radial-gradient(circle at 85% 20%, rgba(126, 162, 167, 0.22), transparent 24%),
-        #f1efea;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    padding: 65px 20px;
-    text-align: center;
-    background: #17242c;
-    color: #d9e2e6;
-}
-
-footer h2 {
     font-weight: 500;
-    margin-bottom: 10px;
 }
 
-footer p {
-    font-family: Arial, sans-serif;
+.media-card p {
+    max-width: 360px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
     font-size: 12px;
-    color: #aebbc1;
+
+    line-height: 1.75;
+
+    color: #d7e6eb;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ---------- MEDIA ELEMENTS ---------- */
 
-@media (max-width: 760px) {
+.media-icons {
+    display: flex;
 
-    .intro-grid,
-    .leader-grid {
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+.media-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.07);
+
+    font-size: 15px;
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   GENERAL RESPONSIVE RULES
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .intro-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 40px;
     }
 
     .hero {
-        min-height: 78vh;
+        min-height: 88vh;
     }
 
     .hero-content {
-        padding: 60px 0;
+        padding: 75px 0;
     }
 
-    .work-inner {
-        padding: 28px 23px;
+    .hero h1 {
+        font-size: clamp(42px, 12vw, 65px);
     }
 
-    .work-card h3 {
-        font-size: 32px;
+    .media-card {
+        min-height: 300px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .hero-description {
+        font-size: 15px;
     }
 
-    .vince-work a {
-        align-items: flex-start;
+    .hero-meta {
+        gap: 7px;
     }
 
-    .vince-work-type {
-        display: none;
+    .meta-pill {
+        font-size: 8px;
+        padding: 8px 11px;
+    }
+
+    .credit-card {
+        width: 100%;
+    }
+
+    .intro {
+        padding: 75px 0;
+    }
+
+    .intro h2 {
+        font-size: 40px;
+    }
+
+    .media-card {
+        padding: 26px;
+        border-radius: 18px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+     ======================================================= -->
 
 <header class="hero" id="home">
 
-    <div class="container hero-content">
+    <!-- Floating multimedia elements -->
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
+    <div class="hero-orb orb-three"></div>
 
-        <div class="small-label">
+
+    <div class="hero-content">
+
+        <div class="kicker">
             Creative Writing • Multimedia Forms
         </div>
+
 
         <h1>
             Creating a Literary Online Portfolio Using Multimedia Forms
         </h1>
 
+
         <p class="hero-description">
             A digital collection of literary works presented through
-            writing, visual design, multimedia elements, and online
-            presentation.
+            writing, visual design, atmosphere, hyperlinks, and
+            interactive digital presentation.
         </p>
 
-        <div class="identity">
 
-            <strong>Group 3 - Reporter #6</strong>
+        <div class="hero-meta">
+
+            <div class="meta-pill">
+                Literary Works
+            </div>
+
+            <div class="meta-pill">
+                Multimedia
+            </div>
+
+            <div class="meta-pill">
+                Digital Portfolio
+            </div>
+
+            <div class="meta-pill">
+                Group 3
+            </div>
+
+        </div>
+
+
+        <div class="credit-card">
+
+            <strong>
+                Group 3 - Reporter #6
+            </strong>
 
             <span>
                 Website Prepared by: Vince Balgomia
@@ -702,163 +1064,153 @@ footer p {
 
     </div>
 
+
+    <div class="scroll-hint">
+
+        <span>
+            Explore
+        </span>
+
+        <div class="scroll-line"></div>
+
+    </div>
+
 </header>
 
 
-<!-- =========================
+<!-- =======================================================
      NAVIGATION
-========================= -->
+     ======================================================= -->
 
 <nav>
 
     <div class="nav-inner">
 
-        <a href="#home">Home</a>
-        <a href="#leader">Leader</a>
-        <a href="#vince-works">Leader's Works</a>
-        <a href="#members">Members</a>
-        <a href="#blue-flowers">Clark</a>
-        <a href="#quiet-love">Rezielyn</a>
-        <a href="#road">Cristine</a>
-        <a href="#mountstrain">Abby</a>
-        <a href="#admired">James</a>
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#lesson">
+            Lesson
+        </a>
+
+        <a href="#leader">
+            Leader
+        </a>
+
+        <a href="#vince">
+            Vince's Works
+        </a>
+
+        <a href="#members">
+            Members
+        </a>
+
+        <a href="#clark">
+            Clark
+        </a>
+
+        <a href="#rezielyn">
+            Rezielyn
+        </a>
+
+        <a href="#cristina">
+            Cristina
+        </a>
+
+        <a href="#abby">
+            Abby
+        </a>
+
+        <a href="#james">
+            James
+        </a>
 
     </div>
 
 </nav>
 
 
-<!-- =========================
-     LESSON INTRO
-========================= -->
+<!-- =======================================================
+     LESSON INTRODUCTION
+     ======================================================= -->
 
-<section class="intro">
+<section class="intro" id="lesson">
 
-    <div class="container intro-grid">
+    <div class="intro-grid">
+
 
         <div>
 
-            <div class="small-label">
+            <div class="section-label">
                 Lesson
             </div>
 
-            <h2 class="section-title">
+
+            <h2>
                 Creative Writing:
                 Creating a Literary Online Portfolio
                 Using Multimedia Forms
             </h2>
 
-            <p class="section-subtitle">
 
-                This portfolio presents selected literary works
-                through a combination of written expression,
-                visual design, hyperlinks, and digital presentation.
-                Each work uses multimedia elements to strengthen
-                its atmosphere, message, and overall creative identity.
-
-            </p>
-
-        </div>
-
-        <div class="lesson-card">
-
-            <strong>
-                Group 3 - Reporter #6
-            </strong>
-
-            <span>
-                Website Prepared by:
-                <b>Vince Balgomia</b>
-                <br><br>
-                Literary Online Portfolio
-                <br>
-                Creative Writing: Multimedia Forms
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LEADER
-========================= -->
-
-<section class="leader" id="leader">
-
-    <div class="container leader-grid">
-
-        <div class="leader-profile">
-
-            <div class="role">
-                Leader
-            </div>
-
-            <h2>
-                Vince Kirsten<br>
-                B. Balgomia
-            </h2>
-
-            <div class="star-line">
-                ✦ ✧ ✦
-            </div>
-
-            <p>
-                A Grade 12 HUMSS student currently studying at
-                Judge Feliciano Belmonte Sr. High School.
+            <p class="intro-description">
+                This portfolio presents the creative works of Group 3
+                through literary writing, visual design, multimedia
+                elements, and digital hyperlinks. Rather than presenting
+                the works as plain text alone, each piece is given a
+                visual atmosphere designed to complement its subject,
+                emotion, and message.
             </p>
 
         </div>
 
 
-        <div>
+        <!-- Multimedia concept card -->
 
-            <p class="leader-description">
+        <div class="media-card">
 
-                Vince Kirsten B. Balgomia, usually called Kirsten,
-                is a Grade 12 HUMSS student currently studying at
-                Judge Feliciano Belmonte Sr. High School.
+            <div class="media-card-content">
 
-            </p>
+                <div class="media-card-number">
+                    MULTIMEDIA • 01
+                </div>
 
-            <p class="leader-description">
 
-                As a student leader, researcher, and innovator himself,
-                he has published several works throughout his senior
-                high school years. His interests extend beyond writing
-                and research, with a strong appreciation for science,
-                mathematics, astronomy, and the analytical thinking
-                behind them.
+                <h3>
+                    Words become
+                    an experience.
+                </h3>
 
-            </p>
 
-            <p class="leader-description">
+                <p>
+                    Literature can be presented through more than
+                    written words. Color, typography, imagery,
+                    movement, layout, and digital links can work
+                    together to create a more immersive literary
+                    experience.
+                </p>
 
-                With a scientist's mind, a writer's voice, and a
-                leader's heart, his works reflect a combination of
-                analytical thinking, curiosity, creativity, and an
-                interest in understanding the world from different
-                perspectives.
 
-            </p>
+                <div class="media-icons">
 
-            <p class="leader-description">
+                    <div class="media-icon">
+                        ✎
+                    </div>
 
-                His collection reflects the different sides of his
-                interests, from creative writing and literary expression
-                to research, social commentary, mathematics, science,
-                and ideas that encourage deeper observation and critical
-                thought.
+                    <div class="media-icon">
+                        ◉
+                    </div>
 
-            </p>
+                    <div class="media-icon">
+                        ✦
+                    </div>
 
-            <div class="button-row">
+                    <div class="media-icon">
+                        ↗
+                    </div>
 
-                <a class="button light" href="#vince-works">
-                    Explore Works ↓
-                </a>
+                </div>
 
             </div>
 
@@ -869,91 +1221,9 @@ footer p {
 </section>
 
 
-<!-- =========================
-     VINCE'S WORKS
-========================= -->
-
-<section class="vince-works" id="vince-works">
-
-    <div class="container">
-
-        <div class="works-header">
-
-            <div class="small-label">
-                Leader's Portfolio
-            </div>
-
-            <h2 class="section-title">
-                Works by Vince Balgomia
-            </h2>
-
-            <p class="section-subtitle">
-                Recent and prominent works collected from his
-                senior high school years.
-            </p>
-
-        </div>
-
-
-        <h3>Recent Works</h3>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1uviK4QnZ7SadeeiCYRUJk3dipCorynUpujpkBe46cRk/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-                    <span class="vince-work-title">Practical Research 2</span><br>
-                    <span class="vince-work-type">Research</span>
-                </span>
-                <span class="arrow">↗</span>
-            </a>
-        </div>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1PikcVIIJ7pQCO9xwCFmv4tEEN0IzFz1ti4QQvREXO2M/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-                    <span class="vince-work-title">Pax and Plow</span><br>
-                    <span class="vince-work-type">Literary Work</span>
-                </span>
-                <span class="arrow">↗</span>
-            </a>
-        </div>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1R9gVwB8slHq9ZHEVQ_AAUIUTnDrCSF7m2YLmENJwNek/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-                    <span class="vince-work-title">Ari-SONA B, B is for Budol</span><br>
-                    <span class="vince-work-type">Reflection</span>
-                </span>
-                <span class="arrow">↗</span>
-            </a>
-        </div>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1Aw-va824x02S9bYzzww-CajCYkYt2qrT0U8MFMpuUFw/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-                    <span class="vince-work-title">As Above, So Within</span><br>
-                    <span class="vince-work-type">Creative Writing</span>
-                </span>
-                <span class="arrow">↗</span>
-            </a>
-        </div>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1V6-nihWrAQ6T8E55x8hSrzezYtXVtHlORPec6aKosrY/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-                    <span class="vince-work-title">What Stars Have Witnessed</span><br>
-                    <span class="vince-work-type">Literary Essay</span>
-                </span>
-                <span class="arrow">↗</span>
-            </a>
-        </div>
-
-
-        <div class="vince-work">
-            <a href="https://docs.google.com/document/d/1Qps880380P6ugv92Bq_BPVDEK6lr-2r9f-GmG4tqFq0/edit?usp=drivesdk" target="_blank" rel="noopener">
-                <span>
-    
+<!-- =======================================================
+     PART 1 ENDS HERE
+     
+     DO NOT ADD ANYTHING ELSE YET.
+     COMMIT THIS PART FIRST.
+     ======================================================= -->
