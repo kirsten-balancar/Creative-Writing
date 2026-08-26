@@ -4,37 +4,959 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creative Writing | Multimedia Forms</title>
+<title>Creative Writing: Creating a Literary Online Portfolio Using Multimedia Forms</title>
 
 <style>
 
-/* =========================================================
-   CREATIVE WRITING — MULTIMEDIA PORTFOLIO
-   GROUP 3 • REPORTER #6
-   WEBSITE PREPARED BY VINCE BALGOMIA
-   ========================================================= */
-
-
-/* ---------- RESET ---------- */
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --ink: #202a30;
+    --muted: #657178;
+    --paper: #f8f5ef;
+    --line: rgba(40, 50, 55, 0.14);
+    --shadow: 0 18px 45px rgba(20, 30, 35, 0.12);
 }
 
 body {
-    min-height: 100vh;
+    margin: 0;
+    color: var(--ink);
     font-family: Georgia, "Times New Roman", serif;
-    background: #08111a;
-    color: #202a31;
-    overflow-x: hidden;
+    background: #e9eceb;
 }
+
+a {
+    color: inherit;
+}
+
+.container {
+    width: min(1120px, calc(100% - 32px));
+    margin: auto;
+}
+
+.small-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: clamp(34px, 6vw, 60px);
+    line-height: 1;
+    margin: 12px 0 15px;
+    font-weight: 500;
+}
+
+.section-subtitle {
+    max-width: 720px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 17px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button.dark {
+    background: #202a30;
+    color: white;
+}
+
+.button.light {
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid var(--line);
+}
+
+.button.gold {
+    background: #b58b4c;
+    color: white;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(127, 166, 190, 0.40), transparent 28%),
+        radial-gradient(circle at 88% 80%, rgba(180, 145, 93, 0.30), transparent 30%),
+        linear-gradient(135deg, #101d27, #263d49 48%, #6c6258);
+
+    color: white;
+}
+
+.hero::before {
+    content: "✦";
+    position: absolute;
+    font-size: 280px;
+    right: -30px;
+    top: -70px;
+    opacity: 0.045;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+    left: -280px;
+    bottom: -280px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    padding: 80px 0;
+}
+
+.hero .small-label {
+    color: #bfd5df;
+}
+
+.hero h1 {
+    font-size: clamp(43px, 8vw, 88px);
+    line-height: 0.96;
+    font-weight: 500;
+    max-width: 1000px;
+    margin: 20px 0;
+}
+
+.hero-description {
+    max-width: 760px;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #dce5e9;
+}
+
+.identity {
+    margin-top: 35px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 18px 21px;
+    border-left: 3px solid #c8a76b;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.identity strong {
+    font-family: Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.identity span {
+    color: #c9d4d8;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(250, 248, 243, 0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    width: min(1120px, calc(100% - 20px));
+    margin: auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+nav a:hover {
+    background: #e5e9e8;
+}
+
+
+/* =========================
+   LESSON INTRO
+========================= */
+
+.intro {
+    padding: 90px 0 55px;
+    background:
+        linear-gradient(rgba(248, 245, 239, 0.95), rgba(248, 245, 239, 0.95)),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 29px,
+            rgba(70, 70, 60, 0.07) 30px
+        );
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 55px;
+    align-items: end;
+}
+
+.lesson-card {
+    padding: 28px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: var(--shadow);
+}
+
+.lesson-card strong {
+    display: block;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.lesson-card span {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   LEADER
+========================= */
+
+.leader {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+
+    background:
+        radial-gradient(circle at 80% 20%, rgba(109, 150, 184, 0.32), transparent 25%),
+        radial-gradient(circle at 15% 80%, rgba(179, 145, 92, 0.20), transparent 28%),
+        linear-gradient(135deg, #172631, #304b58 55%, #8a775f);
+
+    color: white;
+}
+
+.leader::before {
+    content: "ASTRA";
+    position: absolute;
+    right: -40px;
+    top: 30px;
+    font-family: Arial, sans-serif;
+    font-size: clamp(90px, 18vw, 220px);
+    font-weight: 900;
+    letter-spacing: -10px;
+    opacity: 0.035;
+}
+
+.leader-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.leader-profile {
+    border-left: 2px solid #c8a76b;
+    padding-left: 25px;
+}
+
+.leader-profile h2 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1;
+    font-weight: 500;
+    margin: 13px 0;
+}
+
+.leader-profile .role {
+    color: #d5b978;
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.leader-profile p {
+    color: #d8e1e4;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.leader-description {
+    color: #dce5e8;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.star-line {
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: #d7bd7d;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   WORK SECTIONS
+========================= */
+
+.works {
+    padding: 90px 0;
+    background: #eeeae2;
+}
+
+.works-header {
+    margin-bottom: 45px;
+}
+
+.work-card {
+    position: relative;
+    overflow: hidden;
+    margin: 30px 0;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(30, 40, 45, 0.13);
+}
+
+.work-inner {
+    padding: 42px;
+    position: relative;
+    z-index: 2;
+}
+
+.work-number {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+.work-card h3 {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1;
+    font-weight: 500;
+    margin: 12px 0 7px;
+}
+
+.author {
+    font-style: italic;
+    font-size: 16px;
+    opacity: 0.72;
+}
+
+.work-description {
+    max-width: 760px;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-top: 25px;
+}
+
+.multimedia {
+    margin-top: 24px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.72;
+}
+
+
+/* =========================
+   UNIQUE MEMBER BACKGROUNDS
+========================= */
+
+/* Clark - The Blue Flowers */
+
+.blue-flowers {
+    background:
+        radial-gradient(circle at 80% 15%, rgba(96, 128, 180, 0.40), transparent 25%),
+        radial-gradient(circle at 20% 90%, rgba(147, 126, 170, 0.25), transparent 30%),
+        linear-gradient(135deg, #eaf2f6, #dbe7ef 50%, #ece5ef);
+
+    color: #24323b;
+}
+
+.blue-flowers::after {
+    content: "✿  ❀  ✿";
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+    font-size: 100px;
+    color: #6f86ad;
+    opacity: 0.10;
+}
+
+
+/* Rezielyn - A Quiet Kind of Love */
+
+.quiet-love {
+    background:
+        radial-gradient(circle at 85% 15%, rgba(163, 73, 67, 0.25), transparent 24%),
+        linear-gradient(120deg, #f3e6ce, #e9d4b7 50%, #d8c2a9);
+
+    color: #3d3029;
+}
+
+.quiet-love::after {
+    content: "❦";
+    position: absolute;
+    right: 40px;
+    bottom: -20px;
+    font-size: 210px;
+    color: #9b4d43;
+    opacity: 0.09;
+}
+
+
+/* Cristine - The Road Only I Could See */
+
+.road {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(202, 164, 82, 0.24), transparent 20%),
+        linear-gradient(180deg, #17251f, #25382f 48%, #b69a60);
+
+    color: white;
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 90%;
+    left: 50%;
+    top: 5%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(238, 203, 108, 0.55) 0,
+        rgba(238, 203, 108, 0.55) 45px,
+        transparent 45px,
+        transparent 80px
+    );
+
+    opacity: 0.25;
+}
+
+
+/* Abby - Mountstrain */
+
+.mountstrain {
+    background:
+        radial-gradient(circle at 25% 15%, rgba(236, 191, 99, 0.35), transparent 22%),
+        radial-gradient(circle at 90% 85%, rgba(36, 103, 66, 0.35), transparent 28%),
+        linear-gradient(135deg, #d9e5d2, #a9c19f 50%, #557b58);
+
+    color: #1f3326;
+}
+
+.mountstrain::after {
+    content: "♣  ♧  ♣";
+    position: absolute;
+    right: 10px;
+    bottom: -30px;
+    font-size: 170px;
+    opacity: 0.08;
+}
+
+
+/* James - ADMIRED, NEVER POSSESSED */
+
+.admired {
+    background:
+        radial-gradient(circle at 75% 18%, rgba(178, 206, 232, 0.34), transparent 22%),
+        radial-gradient(circle at 15% 85%, rgba(61, 91, 128, 0.32), transparent 28%),
+        linear-gradient(150deg, #071625, #102c48 48%, #264c69);
+
+    color: #eaf5ff;
+}
+
+.admired::after {
+    content: "✦     ✧       ✦";
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    font-size: 90px;
+    color: #a9d5f2;
+    opacity: 0.12;
+}
+
+
+/* =========================
+   VINCE'S WORKS
+========================= */
+
+.vince-works {
+    padding: 90px 0;
+
+    background:
+        linear-gradient(rgba(245, 243, 238, 0.94), rgba(245, 243, 238, 0.94)),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0,
+            transparent 14px,
+            rgba(40, 50, 55, 0.035) 15px
+        );
+}
+
+.vince-work {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    margin: 12px 0;
+    overflow: hidden;
+    transition: 0.2s ease;
+}
+
+.vince-work:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(30, 40, 45, 0.08);
+}
+
+.vince-work a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    text-decoration: none;
+    padding: 19px 22px;
+}
+
+.vince-work-title {
+    font-size: 17px;
+}
+
+.vince-work-type {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #7b8589;
+}
+
+.arrow {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+
+/* =========================
+   MEMBERS HEADER
+========================= */
+
+.members {
+    padding: 95px 0 45px;
+
+    background:
+        radial-gradient(circle at 85% 20%, rgba(126, 162, 167, 0.22), transparent 24%),
+        #f1efea;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 65px 20px;
+    text-align: center;
+    background: #17242c;
+    color: #d9e2e6;
+}
+
+footer h2 {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #aebbc1;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+    .intro-grid,
+    .leader-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero {
+        min-height: 78vh;
+    }
+
+    .hero-content {
+        padding: 60px 0;
+    }
+
+    .work-inner {
+        padding: 28px 23px;
+    }
+
+    .work-card h3 {
+        font-size: 32px;
+    }
+
+    .vince-work a {
+        align-items: flex-start;
+    }
+
+    .vince-work-type {
+        display: none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div class="small-label">
+            Creative Writing • Multimedia Forms
+        </div>
+
+        <h1>
+            Creating a Literary Online Portfolio Using Multimedia Forms
+        </h1>
+
+        <p class="hero-description">
+            A digital collection of literary works presented through
+            writing, visual design, multimedia elements, and online
+            presentation.
+        </p>
+
+        <div class="identity">
+
+            <strong>Group 3 - Reporter #6</strong>
+
+            <span>
+                Website Prepared by: Vince Balgomia
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="nav-inner">
+
+        <a href="#home">Home</a>
+        <a href="#leader">Leader</a>
+        <a href="#vince-works">Leader's Works</a>
+        <a href="#members">Members</a>
+        <a href="#blue-flowers">Clark</a>
+        <a href="#quiet-love">Rezielyn</a>
+        <a href="#road">Cristine</a>
+        <a href="#mountstrain">Abby</a>
+        <a href="#admired">James</a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     LESSON INTRO
+========================= -->
+
+<section class="intro">
+
+    <div class="container intro-grid">
+
+        <div>
+
+            <div class="small-label">
+                Lesson
+            </div>
+
+            <h2 class="section-title">
+                Creative Writing:
+                Creating a Literary Online Portfolio
+                Using Multimedia Forms
+            </h2>
+
+            <p class="section-subtitle">
+
+                This portfolio presents selected literary works
+                through a combination of written expression,
+                visual design, hyperlinks, and digital presentation.
+                Each work uses multimedia elements to strengthen
+                its atmosphere, message, and overall creative identity.
+
+            </p>
+
+        </div>
+
+        <div class="lesson-card">
+
+            <strong>
+                Group 3 - Reporter #6
+            </strong>
+
+            <span>
+                Website Prepared by:
+                <b>Vince Balgomia</b>
+                <br><br>
+                Literary Online Portfolio
+                <br>
+                Creative Writing: Multimedia Forms
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LEADER
+========================= -->
+
+<section class="leader" id="leader">
+
+    <div class="container leader-grid">
+
+        <div class="leader-profile">
+
+            <div class="role">
+                Leader
+            </div>
+
+            <h2>
+                Vince Kirsten<br>
+                B. Balgomia
+            </h2>
+
+            <div class="star-line">
+                ✦ ✧ ✦
+            </div>
+
+            <p>
+                A Grade 12 HUMSS student currently studying at
+                Judge Feliciano Belmonte Sr. High School.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p class="leader-description">
+
+                Vince Kirsten B. Balgomia, usually called Kirsten,
+                is a Grade 12 HUMSS student currently studying at
+                Judge Feliciano Belmonte Sr. High School.
+
+            </p>
+
+            <p class="leader-description">
+
+                As a student leader, researcher, and innovator himself,
+                he has published several works throughout his senior
+                high school years. His interests extend beyond writing
+                and research, with a strong appreciation for science,
+                mathematics, astronomy, and the analytical thinking
+                behind them.
+
+            </p>
+
+            <p class="leader-description">
+
+                With a scientist's mind, a writer's voice, and a
+                leader's heart, his works reflect a combination of
+                analytical thinking, curiosity, creativity, and an
+                interest in understanding the world from different
+                perspectives.
+
+            </p>
+
+            <p class="leader-description">
+
+                His collection reflects the different sides of his
+                interests, from creative writing and literary expression
+                to research, social commentary, mathematics, science,
+                and ideas that encourage deeper observation and critical
+                thought.
+
+            </p>
+
+            <div class="button-row">
+
+                <a class="button light" href="#vince-works">
+                    Explore Works ↓
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VINCE'S WORKS
+========================= -->
+
+<section class="vince-works" id="vince-works">
+
+    <div class="container">
+
+        <div class="works-header">
+
+            <div class="small-label">
+                Leader's Portfolio
+            </div>
+
+            <h2 class="section-title">
+                Works by Vince Balgomia
+            </h2>
+
+            <p class="section-subtitle">
+                Recent and prominent works collected from his
+                senior high school years.
+            </p>
+
+        </div>
+
+
+        <h3>Recent Works</h3>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1uviK4QnZ7SadeeiCYRUJk3dipCorynUpujpkBe46cRk/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+                    <span class="vince-work-title">Practical Research 2</span><br>
+                    <span class="vince-work-type">Research</span>
+                </span>
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1PikcVIIJ7pQCO9xwCFmv4tEEN0IzFz1ti4QQvREXO2M/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+                    <span class="vince-work-title">Pax and Plow</span><br>
+                    <span class="vince-work-type">Literary Work</span>
+                </span>
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1R9gVwB8slHq9ZHEVQ_AAUIUTnDrCSF7m2YLmENJwNek/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+                    <span class="vince-work-title">Ari-SONA B, B is for Budol</span><br>
+                    <span class="vince-work-type">Reflection</span>
+                </span>
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1Aw-va824x02S9bYzzww-CajCYkYt2qrT0U8MFMpuUFw/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+                    <span class="vince-work-title">As Above, So Within</span><br>
+                    <span class="vince-work-type">Creative Writing</span>
+                </span>
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1V6-nihWrAQ6T8E55x8hSrzezYtXVtHlORPec6aKosrY/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+                    <span class="vince-work-title">What Stars Have Witnessed</span><br>
+                    <span class="vince-work-type">Literary Essay</span>
+                </span>
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+
+
+        <div class="vince-work">
+            <a href="https://docs.google.com/document/d/1Qps880380P6ugv92Bq_BPVDEK6lr-2r9f-GmG4tqFq0/edit?usp=drivesdk" target="_blank" rel="noopener">
+                <span>
+    }
 
 a {
     color: inherit;
