@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Creative Writing | Multimedia Literary Portfolio</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,9 +24,42 @@ html {
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-    background: #090d18;
+    background: #070a12;
     color: #f5f5f5;
     line-height: 1.7;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.container {
+    width: min(1200px, 90%);
+    margin: auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e4c46c;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1;
+}
+
+.intro {
+    max-width: 800px;
+    color: #b9c2d3;
 }
 
 /* =========================
@@ -29,78 +68,60 @@ body {
 
 .hero {
     min-height: 100vh;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
     overflow: hidden;
 
     background:
-        radial-gradient(circle at 20% 20%, rgba(75,120,210,.35), transparent 25%),
-        radial-gradient(circle at 80% 75%, rgba(150,80,190,.3), transparent 28%),
-        linear-gradient(135deg, #050814, #14264a, #24152f);
+        radial-gradient(circle at 15% 20%, rgba(76, 132, 220, .35), transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(170, 75, 190, .3), transparent 28%),
+        linear-gradient(135deg, #050813, #14264b, #24152f);
 }
 
 .hero::before {
-    content: "";
+    content: "✦   ·   ✧      ·      ✦   ·   ✧";
     position: absolute;
     inset: 0;
-
-    background-image:
-        radial-gradient(#ffffff 1px, transparent 1px),
-        radial-gradient(#ffffff 1px, transparent 1px);
-
-    background-size: 90px 90px, 150px 150px;
-    background-position: 20px 30px, 70px 90px;
-    opacity: .22;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    letter-spacing: 2rem;
+    color: white;
+    opacity: .07;
+    transform: rotate(-12deg);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 1000px;
-    padding: 40px 25px;
-}
-
-.small-title {
-    font-family: Arial, sans-serif;
-    font-size: .75rem;
-    font-weight: bold;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: #e0c574;
+    padding: 40px 20px;
 }
 
 .hero h1 {
     font-size: clamp(3rem, 8vw, 7rem);
-    line-height: .95;
     margin: 25px 0;
 }
 
 .hero p {
-    max-width: 750px;
+    max-width: 760px;
     margin: auto;
-    color: #d3d9e7;
+    color: #d1d8e7;
     font-size: 1.05rem;
 }
 
 .hero-info {
     margin-top: 35px;
     font-family: Arial, sans-serif;
-    font-size: .8rem;
+    font-size: .78rem;
     font-weight: bold;
     letter-spacing: .12em;
     text-transform: uppercase;
+    line-height: 2;
 }
 
 /* =========================
@@ -115,18 +136,21 @@ nav {
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
+
     padding: 12px;
-    background: rgba(5,8,15,.95);
-    backdrop-filter: blur(10px);
+
+    background: rgba(5, 8, 15, .95);
+    backdrop-filter: blur(12px);
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 8px 14px;
+    padding: 8px 15px;
     border-radius: 20px;
+
     font-family: Arial, sans-serif;
-    font-size: .7rem;
+    font-size: .68rem;
     font-weight: bold;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -134,39 +158,6 @@ nav a {
 
 nav a:hover {
     background: rgba(255,255,255,.12);
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section {
-    padding: 100px 7vw;
-}
-
-.container {
-    max-width: 1250px;
-    margin: auto;
-}
-
-.section-label {
-    font-family: Arial, sans-serif;
-    font-size: .7rem;
-    font-weight: bold;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: #d9b86c;
-}
-
-h2 {
-    font-size: clamp(2.7rem, 6vw, 5rem);
-    line-height: 1;
-    margin: 15px 0 25px;
-}
-
-.intro {
-    max-width: 800px;
-    color: #aeb7ca;
 }
 
 /* =========================
@@ -178,58 +169,68 @@ h2 {
     overflow: hidden;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(80,130,220,.3), transparent 25%),
-        radial-gradient(circle at 85% 80%, rgba(155,80,190,.25), transparent 30%),
+        radial-gradient(circle at 15% 15%, rgba(70,130,220,.3), transparent 25%),
+        radial-gradient(circle at 85% 80%, rgba(160,70,190,.25), transparent 30%),
         linear-gradient(135deg, #080d1c, #182b50, #171222);
 }
 
 .leader::after {
     content: "∑   π   ∞   ✦   0   1   1   0";
     position: absolute;
-    right: -50px;
-    top: 100px;
+    right: -80px;
+    top: 120px;
+
     font-family: Arial, sans-serif;
     font-size: 7rem;
     color: white;
     opacity: .025;
+
     transform: rotate(-20deg);
+}
+
+.leader h2 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    margin: 15px 0 25px;
 }
 
 .bio {
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: 120px 1fr;
     gap: 35px;
-    margin: 60px 0;
+
+    margin: 65px 0;
 }
 
 .bio-number {
     font-family: Arial, sans-serif;
     font-size: 5rem;
     font-weight: bold;
-    color: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.08);
 }
 
 .bio p {
-    color: #c0c8d8;
+    color: #c1c9d8;
     margin-bottom: 18px;
 }
 
 .traits {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-bottom: 100px;
 }
 
 .trait {
     padding: 25px;
+
     border: 1px solid rgba(255,255,255,.1);
     border-radius: 18px;
+
     background: rgba(255,255,255,.04);
 }
 
 .trait-symbol {
-    color: #d9b86c;
+    color: #e4c46c;
     font-size: 2rem;
 }
 
@@ -243,7 +244,7 @@ h2 {
 }
 
 /* =========================
-   YOUR WORKS
+   WORK SECTION
 ========================= */
 
 .heading-row {
@@ -251,6 +252,11 @@ h2 {
     justify-content: space-between;
     align-items: end;
     margin-bottom: 35px;
+}
+
+.heading-row h2 {
+    font-size: clamp(2.7rem, 6vw, 5rem);
+    margin-top: 15px;
 }
 
 .count {
@@ -262,39 +268,51 @@ h2 {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
 
 .work {
-    min-height: 290px;
+    min-height: 300px;
     padding: 30px;
+
     border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+
     color: white;
     text-decoration: none;
+
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,.12);
+
     transition: .25s;
 }
 
 .work:hover {
     transform: translateY(-7px);
-    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
 }
 
 .work::before {
     content: "";
     position: absolute;
-    width: 200px;
-    height: 200px;
-    right: -50px;
-    top: -50px;
+
+    width: 230px;
+    height: 230px;
+
+    right: -70px;
+    top: -70px;
+
     border-radius: 50%;
     background: rgba(255,255,255,.1);
 }
 
-.work > * {
+.work-number,
+.work-icon,
+.work-type,
+.work h3,
+.work p,
+.open {
     position: relative;
 }
 
@@ -305,7 +323,7 @@ h2 {
 }
 
 .work-icon {
-    font-size: 2.8rem;
+    font-size: 2.7rem;
     margin: 18px 0 5px;
 }
 
@@ -320,7 +338,6 @@ h2 {
 
 .work h3 {
     font-size: 1.7rem;
-    line-height: 1.1;
     margin: 8px 0;
 }
 
@@ -332,6 +349,7 @@ h2 {
 .open {
     display: inline-block;
     margin-top: 15px;
+
     font-family: Arial, sans-serif;
     font-size: .7rem;
     font-weight: bold;
@@ -339,37 +357,39 @@ h2 {
     text-transform: uppercase;
 }
 
-/* Individual work colors */
+/* Individual recent work backgrounds */
 
 .research {
-    background: linear-gradient(135deg,#172f4d,#536b99);
+    background: linear-gradient(135deg, #173454, #5875a7);
 }
 
 .feature {
-    background: linear-gradient(135deg,#563a24,#a37449);
+    background: linear-gradient(135deg, #563a24, #a37449);
 }
 
 .sona {
-    background: linear-gradient(135deg,#651d2c,#b65c68);
+    background: linear-gradient(135deg, #651d2c, #b65c68);
 }
 
 .poetry {
-    background: linear-gradient(135deg,#34204f,#7559a5);
+    background: linear-gradient(135deg, #34204f, #7559a5);
 }
 
 .stars-work {
-    background: linear-gradient(135deg,#06152f,#28589b);
+    background: linear-gradient(135deg, #06152f, #28589b);
 }
 
 .research-one {
-    background: linear-gradient(135deg,#1d3c37,#5d8375);
+    background: linear-gradient(135deg, #1d3c37, #5d8375);
 }
 
-/* Archive */
+/* =========================
+   ARCHIVE
+========================= */
 
 .archive {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 50px;
 }
 
@@ -377,9 +397,12 @@ h2 {
     display: flex;
     align-items: center;
     gap: 20px;
+
     padding: 17px;
+
     color: white;
     text-decoration: none;
+
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
@@ -395,7 +418,7 @@ h2 {
 
 .archive em {
     margin-left: auto;
-    color: #d9b86c;
+    color: #e4c46c;
 }
 
 /* =========================
@@ -409,11 +432,16 @@ h2 {
 .member {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     min-height: 620px;
+
     margin: 75px 0;
+
     border-radius: 28px;
     overflow: hidden;
+
     border: 1px solid rgba(255,255,255,.1);
+
     box-shadow: 0 25px 70px rgba(0,0,0,.35);
 }
 
@@ -426,6 +454,7 @@ h2 {
 .visual-title {
     position: absolute;
     z-index: 3;
+
     left: 40px;
     right: 40px;
     bottom: 40px;
@@ -440,8 +469,7 @@ h2 {
 }
 
 .visual-title h3 {
-    font-size: clamp(2.3rem,5vw,4.5rem);
-    line-height: .95;
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
     margin-top: 10px;
 }
 
@@ -454,20 +482,22 @@ h2 {
     display: flex;
     justify-content: space-between;
     gap: 15px;
+
     font-family: Arial, sans-serif;
     font-size: .67rem;
     font-weight: bold;
     letter-spacing: .13em;
     text-transform: uppercase;
+
     color: #8793aa;
 }
 
 .form {
-    color: #d9b86c;
+    color: #e4c46c;
 }
 
 .content h2 {
-    font-size: clamp(2.2rem,5vw,4rem);
+    font-size: clamp(2.2rem, 5vw, 4rem);
     margin: 20px 0 5px;
 }
 
@@ -479,7 +509,9 @@ h2 {
 
 .content h4 {
     margin: 22px 0 7px;
-    color: #d9b86c;
+
+    color: #e4c46c;
+
     font-family: Arial, sans-serif;
     font-size: .68rem;
     letter-spacing: .15em;
@@ -493,13 +525,16 @@ h2 {
 .view {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
     margin-top: 28px;
     padding: 16px 18px;
+
     color: white;
     text-decoration: none;
+
     border: 1px solid rgba(255,255,255,.15);
     border-radius: 12px;
+
     font-family: Arial, sans-serif;
     font-size: .73rem;
     font-weight: bold;
@@ -512,40 +547,44 @@ h2 {
 }
 
 /* =========================
-   CLASSMATE BACKGROUNDS
+   CLARK
 ========================= */
-
-/* Clark - Blue Flowers */
 
 .clark .visual {
     background:
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,.35), transparent 18%),
-        linear-gradient(160deg,#a9d4f0,#6589bc 50%,#213e62);
+        radial-gradient(circle at 75% 18%, rgba(255,255,255,.4), transparent 15%),
+        linear-gradient(160deg, #a9d4f0, #6589bc 50%, #213e62);
 }
 
 .clark .visual::after {
-    content: "✿   ❀   ✿   ❀";
+    content: "✿    ❀    ✿    ❀";
+
     position: absolute;
     bottom: 80px;
     left: 25px;
+
     color: #e8f2ff;
     font-size: 3rem;
     opacity: .65;
 }
 
-/* Rezielyn - Quiet Love */
+/* =========================
+   REZIELYN
+========================= */
 
 .rezielyn .visual {
     background:
         radial-gradient(circle at 70% 20%, #f3efd2 0 7%, transparent 8%),
-        linear-gradient(180deg,#263b67,#182844 60%,#091321);
+        linear-gradient(180deg, #263b67, #182844 60%, #091321);
 }
 
 .rezielyn .visual::before {
     content: "✦     ·      ✧     ·     ✦";
+
     position: absolute;
-    top: 60px;
+    top: 55px;
     left: 30px;
+
     color: white;
     letter-spacing: 20px;
     opacity: .6;
@@ -553,48 +592,62 @@ h2 {
 
 .rezielyn .visual::after {
     content: "❀    ❀    ❀";
+
     position: absolute;
     bottom: 80px;
     right: 25px;
+
     color: #c76070;
     font-size: 3.5rem;
 }
 
-/* Cristina - Road */
+/* =========================
+   CRISTINA
+========================= */
 
 .cristina .visual {
     background:
         radial-gradient(circle at 50% 25%, rgba(235,197,99,.4), transparent 18%),
-        linear-gradient(180deg,#1c3734,#0b1718 65%,#bc8a3c);
+        linear-gradient(180deg, #1c3734, #0b1718 65%, #bc8a3c);
 }
 
 .cristina .visual::after {
     content: "";
+
     position: absolute;
+
     left: 50%;
     bottom: -10%;
+
     width: 7px;
     height: 80%;
-    background: repeating-linear-gradient(
-        #d7a83e 0 45px,
-        transparent 45px 90px
-    );
+
+    background:
+        repeating-linear-gradient(
+            #d7a83e 0 45px,
+            transparent 45px 90px
+        );
+
     transform: perspective(180px) rotateX(15deg);
 }
 
-/* Abby - Nature */
+/* =========================
+   ABBY
+========================= */
 
 .abby .visual {
     background:
         radial-gradient(circle at 65% 25%, rgba(245,220,130,.3), transparent 20%),
-        linear-gradient(145deg,#173b2b,#4e7952 55%,#081b12);
+        linear-gradient(145deg, #173b2b, #4e7952 55%, #081b12);
 }
 
 .abby .visual::before {
     content: "❧      ❧      ❧";
+
     position: absolute;
     left: 10px;
     bottom: 50px;
+
     color: #9dbb86;
     font-size: 7rem;
     opacity: .25;
@@ -602,27 +655,33 @@ h2 {
 
 .abby .visual::after {
     content: "✿       ✿";
+
     position: absolute;
     top: 80px;
     right: 35px;
+
     color: #dbe7ba;
     font-size: 4rem;
     opacity: .5;
 }
 
-/* James - Ocean */
+/* =========================
+   JAMES
+========================= */
 
 .james .visual {
     background:
         radial-gradient(circle at 72% 20%, #f1f0d8 0 8%, transparent 9%),
-        linear-gradient(180deg,#06152e,#0c315b 55%,#061326);
+        linear-gradient(180deg, #06152e, #0c315b 55%, #061326);
 }
 
 .james .visual::before {
     content: "✦   ✧      ·     ✦       ✧";
+
     position: absolute;
     top: 55px;
     left: 30px;
+
     color: white;
     letter-spacing: 25px;
     opacity: .65;
@@ -630,13 +689,19 @@ h2 {
 
 .james .visual::after {
     content: "";
+
     position: absolute;
+
     width: 130%;
     height: 160px;
+
     left: -15%;
     bottom: 45px;
+
     border-top: 2px solid rgba(180,215,245,.35);
+
     border-radius: 50%;
+
     box-shadow:
         0 35px 0 rgba(180,215,245,.12),
         0 70px 0 rgba(180,215,245,.08);
@@ -648,14 +713,16 @@ h2 {
 
 .closing {
     min-height: 650px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
 
     background:
         radial-gradient(circle at 50% 45%, rgba(100,120,210,.2), transparent 28%),
-        linear-gradient(135deg,#070a13,#121a2d,#080a12);
+        linear-gradient(135deg, #070a13, #121a2d, #080a12);
 }
 
 .closing-content {
@@ -663,12 +730,13 @@ h2 {
 }
 
 .closing-symbol {
-    color: #d9b86c;
+    color: #e4c46c;
     font-size: 3rem;
 }
 
 .closing h2 {
-    font-size: clamp(3rem,8vw,6rem);
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin: 15px 0;
 }
 
 .closing p {
@@ -679,6 +747,7 @@ h2 {
 
 .credit {
     margin-top: 40px;
+
     font-family: Arial, sans-serif;
     font-size: .75rem;
     font-weight: bold;
@@ -694,7 +763,9 @@ footer {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
     padding: 30px 7vw;
+
     background: #05060a;
 }
 
@@ -752,6 +823,7 @@ footer small {
     .heading-row {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
 
     .visual {
@@ -767,21 +839,23 @@ footer small {
     footer {
         flex-direction: column;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <header class="hero" id="home">
 
     <div class="hero-content">
 
-        <div class="small-title">
+        <div class="section-label">
             Creative Writing • Multimedia Forms
         </div>
 
@@ -795,7 +869,8 @@ footer small {
         </p>
 
         <div class="hero-info">
-            Group 3 — Reporter #6<br>
+            Group 3 — Reporter #6
+            <br>
             Website Prepared by: Vince Balgomia
         </div>
 
@@ -804,24 +879,28 @@ footer small {
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <nav>
 
     <a href="#home">Home</a>
+
     <a href="#leader">Leader</a>
+
     <a href="#works">Works</a>
+
     <a href="#members">Members</a>
+
     <a href="#about">About</a>
 
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      LEADER
-========================= -->
+===================================================== -->
 
 <section class="leader" id="leader">
 
@@ -832,7 +911,7 @@ footer small {
     </div>
 
     <h2>
-        Vince Balgomia
+        Leader: Vince Balgomia
     </h2>
 
     <p class="intro">
@@ -882,7 +961,9 @@ footer small {
 
         <div class="trait">
 
-            <div class="trait-symbol">∑</div>
+            <div class="trait-symbol">
+                ∑
+            </div>
 
             <h3>
                 Analytical
@@ -898,7 +979,9 @@ footer small {
 
         <div class="trait">
 
-            <div class="trait-symbol">✦</div>
+            <div class="trait-symbol">
+                ✦
+            </div>
 
             <h3>
                 Curious
@@ -914,7 +997,9 @@ footer small {
 
         <div class="trait">
 
-            <div class="trait-symbol">✎</div>
+            <div class="trait-symbol">
+                ✎
+            </div>
 
             <h3>
                 Creative
@@ -930,7 +1015,9 @@ footer small {
 
         <div class="trait">
 
-            <div class="trait-symbol">♧</div>
+            <div class="trait-symbol">
+                ♧
+            </div>
 
             <h3>
                 Leader
@@ -946,9 +1033,9 @@ footer small {
     </div>
 
 
-<!-- =========================
+<!-- =====================================================
      RECENT WORKS
-========================= -->
+===================================================== -->
 
 <div id="works">
 
@@ -975,8 +1062,6 @@ footer small {
 
     <div class="work-grid">
 
-
-        <!-- Research Grade 12 -->
 
         <a
             class="work research"
@@ -1010,8 +1095,6 @@ footer small {
 
         </a>
 
-
-        <!-- Pax and Plow -->
 
         <a
             class="work feature"
@@ -1047,25 +1130,4 @@ footer small {
         </a>
 
 
-        <!-- SONA -->
-
-        <a
-            class="work sona"
-            href="https://docs.google.com/document/d/1R9gVwB8slHq9ZHEVQ_AAUIUTnDrCSF7m2YLmENJwNek/edit?usp=drivesdk"
-            target="_blank"
-        >
-
-            <div class="work-number">
-                03
-            </div>
-
-            <div class="work-icon">
-                ◈
-            </div>
-
-            <div class="work-type">
-                Reflection from SONA
-            </div>
-
-            <h3>
-        
+    
