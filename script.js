@@ -43,12 +43,12 @@
    CONTENT DATA
    =========================================================== */
 const recentWorks = [
-  { title: "Practical Research 2", type: "Research · Grade 12" },
-  { title: "Pax and Plow", type: "Feature Article" },
-  { title: "Ari-SONA B, B is for Budol", type: "Reflection from SONA" },
-  { title: "As Above, So Within", type: "Poem" },
-  { title: "What Stars Have Witnessed", type: "Ateneo: Pathways Essay" },
-  { title: "Practical Research 1", type: "Research · Grade 11" }
+  { title: "Practical Research 2", type: "Research · Grade 12", url: "https://docs.google.com/document/d/1uviK4QnZ7SadeeiCYRUJk3dipCorynUpujpkBe46cRk/edit?usp=sharing" },
+  { title: "Pax and Plow", type: "Feature Article", url: "https://docs.google.com/document/d/1PikcVIIJ7pQCO9xwCFmv4tEEN0IzFz1ti4QQvREXO2M/edit?usp=sharing" },
+  { title: "Ari-SONA B, B is for Budol", type: "Reflection from SONA", url: "https://docs.google.com/document/d/1R9gVwB8slHq9ZHEVQ_AAUIUTnDrCSF7m2YLmENJwNek/edit?usp=sharing" },
+  { title: "As Above, So Within", type: "Poem", url: "https://docs.google.com/document/d/1Aw-va824x02S9bYzzww-CajCYkYt2qrT0U8MFMpuUFw/edit?usp=sharing" },
+  { title: "What Stars Have Witnessed", type: "Ateneo: Pathways Essay", url: "https://docs.google.com/document/d/1V6-nihWrAQ6T8E55x8hSrzezYtXVtHlORPec6aKosrY/edit?usp=sharing" },
+  { title: "Practical Research 1", type: "Research · Grade 11", url: "https://docs.google.com/document/d/1Qps880380P6ugv92Bq_BPVDEK6lr-2r9f-GmV4tqFq0/edit?usp=sharing" }
 ];
 
 const prominentWorks = [
@@ -76,7 +76,6 @@ const members = [
     who: "a playful, daffy, and oftentimes silent individual.",
     workTitle: "The Blue Flowers",
     canva: "https://canva.link/9ilra4sb747zydf",
-    scenery: "A soft, watercolor-style background set against a light sky-blue backdrop. Delicate painted elements frame the text, including muted silver-purple leaves branching from the corners, with large soft-blue blossoms and detailed dark centers anchoring the edges.",
     essence: "The transformative power of consistent kindness, care, and hope — how small, everyday actions can cultivate beauty and resilience in difficult environments.",
     description: "A short story about Maya, a young student who discovers a garden that teaches her the value of kindness, patience, care, and hope. The blue flowers become a symbol of how small acts of care can create beauty and inspire an entire community."
   },
@@ -88,7 +87,6 @@ const members = [
     who: "an amusing, jolly, and sometimes bold individual.",
     workTitle: "A Quiet Kind of Love",
     canva: "https://canva.link/kovvn6stmnc1bn8",
-    scenery: "A landscape of a couple on a grassy hill at dusk gives way to a warm, aged parchment canvas lined with torn-paper scraps and roses, closing on a sepia embrace framed by delicate leaf silhouettes.",
     essence: "Genuine romance doesn't rely on grand, performative gestures. Lasting love is a conscious, daily commitment grounded in simple kindness, trust, and shared stillness through life's changing seasons.",
     description: "A poem about gentle intimacy, trust, kindness, and the quiet moments that make love meaningful — presenting love as a conscious choice to care, stay, and grow together."
   },
@@ -100,7 +98,6 @@ const members = [
     who: "a daring, witty, and genuine individual.",
     workTitle: "The Road Only I Could See",
     canva: "https://canva.link/e6bicg942glby17",
-    scenery: "A foggy, misty forest road under streetlights opens the piece, deepening into a dark, moody night drive lit by yellow and green glow, before breaking into sunbeams bursting through the trees at dawn.",
     essence: "Personal growth, resilience, and self-discovery through hardship — moving from nighttime uncertainty and doubt into morning clarity, where past scars become the steps that build inner strength.",
     description: "A reflective poem about hardship, resilience, and self-discovery. Its journey from darkness toward morning light represents how struggles and scars can become part of the path that shapes who we become."
   },
@@ -112,7 +109,6 @@ const members = [
     who: "a self-sufficient, diligent, and resourceful individual.",
     workTitle: "Mounstrain",
     canva: "https://canva.link/zhrm4lml1lvst84",
-    scenery: "A dense forest canopy in golden light opens the work, softening into a bokeh backdrop of floating, iridescent bubbles, then closing on lush jungle foliage and sunlit tropical greenery.",
     essence: "Environmental destruction caused by pollution and plastic waste — trash rendered as bright, unnatural scars that suffocate wildlife, closing with an urgent call to protect and speak up for nature.",
     description: "An environmental poem addressing pollution and plastic waste through imagery of damaged landscapes. It presents waste as unnatural scars on nature and ends with a call for humanity to protect the environment."
   },
@@ -124,7 +120,6 @@ const members = [
     who: "a reliable, steady, and supportive individual.",
     workTitle: "Admired, Never Possessed",
     canva: "https://canva.link/o7s4aumqwevlo3b",
-    scenery: "A twilight shoreline with a lone figure in white opens the piece, moving into a moonlit seascape framed by dark cliffs, and closing on rolling waves breaking under stormy, star-lit clouds.",
     essence: "The beauty of unrequited or distant affection — love does not always require ownership or closeness; true appreciation lies in cherishing someone's presence from afar.",
     description: "A reflective piece about distant affection and the beauty of admiring someone without needing to possess them. Through the ocean, moonlight, and stars, it explores the idea that some people are meant to be cherished from afar."
   }
@@ -137,7 +132,7 @@ function renderRecentWorks(){
   const list = document.getElementById('recent-works');
   list.innerHTML = recentWorks.map(w => `
     <li>
-      <span class="work-title">${w.title}</span>
+      <a class="work-title" href="${w.url}" target="_blank" rel="noopener noreferrer">${w.title}</a>
       <span class="work-type">${w.type}</span>
     </li>
   `).join('');
@@ -155,7 +150,7 @@ function renderProminentWorks(){
 function renderChapters(){
   const wrap = document.getElementById('chapters');
   wrap.innerHTML = members.map((m, i) => `
-    <article class="chapter" data-member="${m.id}">
+    <article class="chapter reveal" data-member="${m.id}">
       <button class="chapter-head" aria-expanded="false" aria-controls="panel-${m.id}">
         <span class="chapter-num">${String(i + 1).padStart(2, '0')}</span>
         <span class="chapter-head-text">
@@ -178,8 +173,12 @@ function renderChapters(){
             <div>
               <span class="chapter-label">Essence</span>
               <p class="chapter-desc">${m.essence}</p>
-              <span class="chapter-label" style="margin-top:1.1rem;">Background scenery</span>
-              <p class="chapter-scenery">${m.scenery}</p>
+              <span class="chapter-label" style="margin-top:1.1rem;">Palette</span>
+              <div class="chapter-palette" aria-hidden="true">
+                <span style="background:var(--acc-dim);"></span>
+                <span style="background:var(--acc);"></span>
+                <span style="background:var(--acc-soft);"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -200,3 +199,27 @@ function renderChapters(){
 renderRecentWorks();
 renderProminentWorks();
 renderChapters();
+
+/* ===========================================================
+   SCROLL REVEAL — fades/slides elements in as they enter view
+   =========================================================== */
+(function scrollReveal(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = document.querySelectorAll('.reveal');
+
+  if (reduceMotion || !('IntersectionObserver' in window)){
+    targets.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  targets.forEach(el => observer.observe(el));
+})();
